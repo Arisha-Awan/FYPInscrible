@@ -23,6 +23,17 @@ const ProfileHeader = ({}) => {
     getMyProfilePost,
     myProfilePosts,
   } = useContext(InscribleContext);
+
+  const getFollowers = async () => {
+    const followerListing = await contract.getMyFollowersList(address);
+    setfollowerListing(followerListing);
+  };
+
+  const getFollowing = async () => {
+    const followingList = await contract.getMyFollowingsList(address);
+    setfollowingList(followingList);
+  };
+
   useEffect(() => {
     const checkFriends = async () => {
       const isFollowStatus = await checkAlreadyFriend({
@@ -30,39 +41,29 @@ const ProfileHeader = ({}) => {
         accountAddress: address,
       });
       setIsFollowingBtn(isFollowStatus);
-      console.log("isFollowSTatus    " + isFollowStatus);
+      console.log("isFollowStatus    " + isFollowStatus);
     };
 
     checkFriends();
-    getMyFollowingsList();
-    getFollowersList();
+    getFollowing();
+    getFollowers();
     getMyProfilePost(address);
   }, [connectedAccount, contract]);
 
   const { username, address } = useParams();
-  const getFollowersList = async () => {
-    const followerListing = await contract.getMyFollowersList(address);
-    setfollowerListing(followerListing);
-  };
-
-  const getMyFollowingsList = async () => {
-    const followingList = await contract.getMyFollowingsList(address);
-    setfollowingList(followingList);
-  };
 
   // Function to handle the follow/unfollow action
-  const handleFollowToggle = () => {
+  const handleFollowToggle = async () => {
     if (isFollowingBtn) {
       // Perform the unfollow action
-      // ...
-      removeFriends({ accountAddress: address });
+      await removeFriends({ accountAddress: address });
       setIsFollowingBtn(false); // Update the state to reflect unfollowing
+      await getFollowers(); // Update the follower list
     } else {
       // Perform the follow action
-      // ...
-      addFriends({ accountAddress: address });
-
+      await addFriends({ accountAddress: address });
       setIsFollowingBtn(true); // Update the state to reflect following
+      await getFollowers(); // Update the follower list
     }
   };
 
@@ -117,7 +118,7 @@ const ProfileHeader = ({}) => {
                   setIsFollower(true);
                   setIsFollowing(false);
                   setIsPost(false);
-                  getFollowersList();
+                  getFollowers();
                 }}
               >
                 {" "}
@@ -132,7 +133,7 @@ const ProfileHeader = ({}) => {
                   setIsFollower(false);
                   setIsFollowing(true);
                   setIsPost(false);
-                  getMyFollowingsList();
+                  getFollowing();
                 }}
               >
                 {" "}

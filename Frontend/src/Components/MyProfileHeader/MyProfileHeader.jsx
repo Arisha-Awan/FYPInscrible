@@ -8,7 +8,6 @@ const MyProfileHeader = ({}) => {
   const [isPost, setIsPost] = useState(true);
   const [isFollower, setIsFollower] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
-  const [isFollowingBtn, setIsFollowingBtn] = useState(false);
   const [followerListing, setfollowerListing] = useState([]);
   const [followingList, setfollowingList] = useState([]);
   const {
@@ -25,15 +24,6 @@ const MyProfileHeader = ({}) => {
     GetUserName,
   } = useContext(InscribleContext);
   useEffect(() => {
-    const checkFriends = async () => {
-      const isFollowStatus = await checkAlreadyFriend({
-        connectedAccountAddress: connectedAccount,
-        accountAddress: connectedAccount,
-      });
-      setIsFollowingBtn(isFollowStatus);
-    };
-
-    checkFriends();
     getFollowersList();
     getMyFollowingsList();
     getMyProfilePost(connectedAccount);
@@ -49,23 +39,6 @@ const MyProfileHeader = ({}) => {
   const getMyFollowingsList = async () => {
     const followingList = await contract.getMyFollowingsList(connectedAccount);
     setfollowingList(followingList);
-  };
-
-  // Function to handle the follow/unfollow action
-  const handleFollowToggle = () => {
-    if (isFollowingBtn) {
-      // Perform the unfollow action
-      // ...
-      removeFriends({ accountAddress: connectedAccount });
-
-      setIsFollowingBtn(false); // Update the state to reflect unfollowing
-    } else {
-      // Perform the follow action
-      // ...
-      addFriends({ accountAddress: connectedAccount });
-
-      setIsFollowingBtn(true); // Update the state to reflect following
-    }
   };
 
   return (
