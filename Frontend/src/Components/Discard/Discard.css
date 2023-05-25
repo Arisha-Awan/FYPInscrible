@@ -1,0 +1,60 @@
+.discard-container{
+    height: 200px;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    z-index: 77777777;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 20px;
+    box-shadow: 2px 2px 30px 3px rgb(44, 44, 44), -2px -2px 30px 3px rgb(44, 44, 44);
+}
+
+.discard-message{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    line-height: 50px;
+}
+
+.d-btn{
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-top: 1px solid rgb(173, 173, 173);
+    font-size: medium;
+    background: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cancle-discard{
+    border-radius: 0 0 20px 20px;
+}
+
+.discard-button{
+    color: red;
+}
+
+.d-none{
+    display: none;
+}
+
+@media screen and (max-width: 405px) {
+    .discard-container{
+        width: 320px;
+    }
+    .discard-message{
+        padding: 10px;
+    }
+    .discard-message>span{
+        line-height: 20px;
+    }
+}

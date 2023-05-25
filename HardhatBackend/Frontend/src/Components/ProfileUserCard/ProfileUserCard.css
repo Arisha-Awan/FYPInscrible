@@ -1,0 +1,53 @@
+.profile-usercard{
+    max-width: 100%;
+    height: fit-content;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.profiel-usercard-main-info{
+    display: flex;
+    align-items: center;
+}
+
+.profile-usercard-pic{
+    height: 50px;
+    width: 50px;
+    border: 1px solid rgba(173, 173, 173);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-usercard-name{
+    font-weight: 500;
+    display: inline-flex;
+    text-align: center;
+    padding: 0 0 0 10px;
+    margin-right: 10px;
+}
+
+.profile-remove-follower{
+    position: absolute;
+    right: 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 500;
+    height: 30px;
+    width: 100px;
+}
+
+.profile-remove-follower:hover{
+    background: rgb(206, 206, 206);
+}
+
+.profile-usercard-address{
+    color: rgba(173, 173, 173);
+}
+
+@media screen and (max-width: 500px) {
+    .profile-remove-follower{
+        width: 50px;
+        background: white;
+    }
+}

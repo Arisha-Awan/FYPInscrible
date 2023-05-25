@@ -1,0 +1,17 @@
+.post-type-selection{
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.post-type-selector{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.active{
+    font-weight: 700;
+}
