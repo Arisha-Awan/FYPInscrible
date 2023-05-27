@@ -124,6 +124,8 @@ const MyProfileHeader = ({}) => {
                   address={item.pubkey}
                   key={i}
                   followingBtn={isFollowing}
+                  getFollowersList={getFollowersList}
+                  getMyFollowingsList={getMyFollowingsList}
                 />
               );
             })}
@@ -145,6 +147,8 @@ const MyProfileHeader = ({}) => {
                   address={item.pubkey}
                   key={i}
                   followingBtn={isFollowing}
+                  getFollowersList={getFollowersList}
+                  getMyFollowingsList={getMyFollowingsList}
                 />
               );
             })}

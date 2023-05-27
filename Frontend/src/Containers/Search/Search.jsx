@@ -80,11 +80,11 @@ const Search = () => {
                     .toLowerCase()
                     .includes(query.toLowerCase())
                 )
-                .map((item) => (
+                .map((item, i) => (
                   <SearchCard
                     username={item.username}
                     address={item.accountAddress}
-                    key={item.id}
+                    key={i}
                     filteruser={item.username}
                     filterUserAdress={item.address}
                   />

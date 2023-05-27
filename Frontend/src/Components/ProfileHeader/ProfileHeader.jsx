@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./ProfileHeader.css";
 import { ProfilePosts, ProfileUserCard } from "../Index";
-import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { InscribleContext } from "../../Context/Context";
 

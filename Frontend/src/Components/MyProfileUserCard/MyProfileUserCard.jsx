@@ -4,7 +4,14 @@ import { UnFollowModal } from "../Index";
 import { RemoveFollowerModal } from "../Index";
 import { useNavigate } from "react-router-dom";
 import { InscribleContext } from "../../Context/Context";
-const MyProfileUserCard = ({ userName, profilePic, address, followingBtn }) => {
+const MyProfileUserCard = ({
+  userName,
+  profilePic,
+  address,
+  followingBtn,
+  getFollowersList,
+  getMyFollowingsList,
+}) => {
   const { removeFriends, removeFollower } = useContext(InscribleContext);
   const navigate = useNavigate();
   const [isUnFollowModalOpen, setIsUnFollowModalOpen] = useState(false);
@@ -25,8 +32,11 @@ const MyProfileUserCard = ({ userName, profilePic, address, followingBtn }) => {
     console.log("Unfollowedddddddddddddddddddddddd");
     console.log(address);
     await removeFriends({ accountAddress: address });
+
     // Close the modal
     setIsUnFollowModalOpen(false);
+    //update useStates of following listing
+    getMyFollowingsList();
   };
 
   ///reomve Follwer
@@ -37,6 +47,8 @@ const MyProfileUserCard = ({ userName, profilePic, address, followingBtn }) => {
     await removeFollower({ accountAddress: address });
     // Close the modal
     setIsFollowerRemoveModalOpen(false);
+    // /update useStates of follower listing
+    await getFollowersList();
   };
 
   return (
