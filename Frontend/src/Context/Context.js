@@ -242,6 +242,7 @@ export const InscribleProvider = ({ children }) => {
     console.log(address);
     console.log(connectedAccount);
     setIsLoading(true);
+    console.log("from getPostByUser " + contract);
     const Posts = await contract.getSingleUserPost(address);
     console.log("possssssssssssssst");
     console.log(Posts);

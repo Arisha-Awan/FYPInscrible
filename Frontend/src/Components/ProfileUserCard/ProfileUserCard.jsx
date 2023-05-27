@@ -19,6 +19,9 @@ const ProfileUserCard = ({ userName, profilePic, address }) => {
   };
   useEffect(() => {
     const checkFriends = async () => {
+      if (!contract) {
+        return;
+      }
       const isFollowStatus = await checkAlreadyFriend({
         connectedAccountAddress: connectedAccount,
         accountAddress: address,

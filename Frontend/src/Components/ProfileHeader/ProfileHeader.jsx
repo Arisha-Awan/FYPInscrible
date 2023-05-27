@@ -34,6 +34,11 @@ const ProfileHeader = ({}) => {
   };
 
   useEffect(() => {
+    console.log(connectedAccount);
+    console.log("useEffect runn in profile header");
+    if (!contract) {
+      return;
+    }
     const checkFriends = async () => {
       const isFollowStatus = await checkAlreadyFriend({
         connectedAccountAddress: connectedAccount,

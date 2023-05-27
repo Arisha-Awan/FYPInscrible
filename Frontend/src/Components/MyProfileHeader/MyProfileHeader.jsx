@@ -23,15 +23,22 @@ const MyProfileHeader = ({}) => {
     currentUsername,
     GetUserName,
   } = useContext(InscribleContext);
+
   useEffect(() => {
+    if (!contract) {
+      return; // Return early if contract is not set
+    }
+
     getFollowersList();
     getMyFollowingsList();
     getMyProfilePost(connectedAccount);
     GetUserName();
-  }, [connectedAccount, contract]);
+  }, [contract]);
 
   // const { username, address } = useParams();
   const getFollowersList = async () => {
+    // console.log("from follower list");
+    // console.log(contract);
     const followerListing = await contract.getMyFollowersList(connectedAccount);
     setfollowerListing(followerListing);
   };
